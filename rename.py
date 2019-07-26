@@ -22,15 +22,15 @@ def recurve_opt(root_path):
             (path, extension) = os.path.splitext(target_file)
 
             file_name = file.replace(extension,'')
+            file_name = file_name.replace("@2x","")
+            file_name = file_name.replace("@3x","")
             count = target_file.count(file_name)
 
             if (extension == '.jpg' or extension == '.png' or extension == '.pdf') and (count==2):
                 print ("target_file====>"+target_file)
                 #替换后的文件名，eg:zt_xxx.jpg
                 rename_target_file = target_file.replace(file,suffer+file);
-                rename_target_file = rename_target_file.replace("@2x","");
-                rename_target_file = rename_target_file.replace("@3x","");
-                #os.rename(target_file,rename_target_file)
+                os.rename(target_file,rename_target_file)
 
                 #完整的文件名给加入到full_file_list； eg icon_home.png; 用来以后替换Assert的content.json中的
                 if file not in full_file_list:
@@ -97,7 +97,7 @@ def replace_file_name():
 
 def main():
     recurve_opt(assert_folder)
-    #rename_dir_opt(project_floder)
-    #replace_file_name()
+    rename_dir_opt(project_floder)
+    replace_file_name()
 if __name__ == '__main__':
     main()
