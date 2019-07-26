@@ -14,6 +14,11 @@ project_floder = '/Users/luigi/Documents/SYW/Test/zt-ios/ZTFutures'
 file_name_list = []
 #带有后缀的文件图片
 full_file_list=[]
+
+#扩展文件数组
+extension_list= [".png",".jpg",".pdf"]
+#黑名单
+black_name_list = ["ALIPAY_channel_choose","ALIPAY_channel_default","UNIONPAY_channel_choose","UNIONPAY_channel_default","icon_ doubt"]
 #file_name_list = ['arrow_down','default_header','icon_star_select']
 def recurve_opt(root_path):
     for file in os.listdir(root_path):
@@ -24,9 +29,14 @@ def recurve_opt(root_path):
             file_name = file.replace(extension,'')
             file_name = file_name.replace("@2x","")
             file_name = file_name.replace("@3x","")
+
+            #如果是黑名单里边的则过滤掉，直接上一个
+            if file_name in black_name_list:
+                continue;
+
             count = target_file.count(file_name)
 
-            if (extension == '.jpg' or extension == '.png' or extension == '.pdf') and (count==2):
+            if (extension in extension_list) and (count==2):
                 print ("target_file====>"+target_file)
                 #替换后的文件名，eg:zt_xxx.jpg
                 rename_target_file = target_file.replace(file,suffer+file);
