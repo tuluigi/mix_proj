@@ -5,8 +5,8 @@ __author__ = 'tu'
 import os
 
 # 需要扫描的图片的目录
-assert_folder = '/Users/luigi/Documents/SYW/Test/DAEInvest/Assets.xcassets'
-project_floder = '/Users/luigi/Documents/SYW/Test/DAEInvest'
+assert_folder  = '/Users/luigi/Documents/ZT/NNEFutures/NNEFutures/Assets.xcassets'
+project_floder = '/Users/luigi/Documents/ZT/NNEFutures'
 # 扩展文件数组
 extension_list = [".png", ".jpg", ".pdf"]
 # 黑名单
@@ -15,8 +15,8 @@ black_name_list = ["ALIPAY_channel_choose", "ALIPAY_channel_default", "UNIONPAY_
 
 replace_imagename_dic = {}
 
-string_replace_old = 'dae_noa_'
-string_replace_new = 'mtn_'
+string_replace_old = 'ant_'
+string_replace_new = 'nne_'
 
 
 def recurve_opt(root_path):
@@ -36,7 +36,7 @@ def recurve_opt(root_path):
                 pass
                 file_name_new = file_name.replace(string_replace_old, string_replace_new);
                 target_file_new = target_file.replace(file_name, file_name_new);
-                print("file_name=>" + file_name + "; file_name_new=>" + file_name_new)
+                print("file==>"+file+";file_name=>" + file_name + "; file_name_new=>" + file_name_new+"\n target_file=>"+target_file)
                 # 保存到数组中
                 replace_imagename_dic[target_file] = target_file_new;
 
